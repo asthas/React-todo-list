@@ -15,10 +15,10 @@ class App extends Component {
 	}
 
 	handleAddTodo = (e) => {
-		this.setState({inputValue : e.target.value})
 		if(e.which === 13){
 			this.setState({
-				todos: [...this.state.todos, e.target.value]
+				todos: [...this.state.todos, this.state.inputValue],
+				inputValue: ''
 			})
 		}
 	}
@@ -35,6 +35,12 @@ class App extends Component {
 		})
 	}
 
+	handleOnInput = (e) => {
+		this.setState({
+			inputValue: e.target.value
+		})
+	}
+
 	render() {
 		return (
 			<div className="App">
@@ -43,6 +49,7 @@ class App extends Component {
 				</div>
 				<div className="App-intro">
 					<AddTodo
+						onInput={this.handleOnInput}
 						todos={this.state.todos}
 						onAddTodo={this.handleAddTodo}
 						value={this.state.inputValue}

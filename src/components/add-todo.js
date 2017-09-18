@@ -5,6 +5,7 @@ const AddTodo = (props) => {
 		<input type="text" 
 			onKeyPress={props.onAddTodo} 
 			value={props.value}
+			onInput={props.onInput}
 		/>
 	)
 }
